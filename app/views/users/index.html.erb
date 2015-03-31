@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>User Management System I</title>
+	<style>
+		td {
+			border: 1px solid #8e8e8e;
+			padding: 2px;
+		}
+		th {
+			background-color: #8e8e8e;
+			padding: 2px;
+		}
+	</style>
+</head>
+<body>
+	<h3>Listing Users</h3>
+	<table>
+		<tbody>
+			<tr><th>First Name</th><th>Last Name</th><th>Email</th></tr>
+		</tbody>
+		<tbody>
+			<% @User.each do |user| %>
+			<tr>
+				<td><%=user.first_name%></td><td><%=user.last_name%></td><td><%=user.email%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</body>
+</html>
