@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>User Management System I</title>
+	<style>
+		td {
+			border: 1px solid #8e8e8e;
+			padding: 2px;
+		}
+		th {
+			background-color: #8e8e8e;
+			padding: 2px;
+		}
+	</style>
+</head>
+<body>
+<% if flash[:notice] then %>
+<div id='alert'>
+	<%=flash[:notice] %>
+</div>
+<% end %>
+	<h3>Listing Users</h3>
+	<table>
+		<tbody>
+			<tr>
+				<td>First Name: <%=@user.first_name%></td>
+			</tr>
+			<tr>
+				<td>Last Name: <%=@user.last_name%></td>
+			</tr>
+			<tr>
+				<td>Email: <%=@user.email%></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href='/users/<%=@user.id%>/edit'>Edit</a> | <a href='/'>Back</a>
+</body>
+</html>

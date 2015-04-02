@@ -12,21 +12,45 @@
 			background-color: #8e8e8e;
 			padding: 2px;
 		}
+		#nav {
+			margin: 4px auto;
+			width: 50%;
+		}
 	</style>
 </head>
 <body>
+<% if flash[:notice] then %>
+<div id='alert'>
+	<%=flash[:notice] %>
+</div>
+<% end %>
+<div class='container'>
 	<h3>Listing Users</h3>
 	<table>
-		<tbody>
-			<tr><th>First Name</th><th>Last Name</th><th>Email</th></tr>
-		</tbody>
-		<tbody>
-			<% @User.each do |user| %>
-			<tr>
-				<td><%=user.first_name%></td><td><%=user.last_name%></td><td><%=user.email%></td>
-			</tr>
-			<% end %>
-		</tbody>
+		<tr>
+			<th class='column'>First Name</th>
+			<th class='column'>Last Name</th>
+			<th class='column'>Email</th>
+			<th class='column'>Action<div style='width: 200px;'></div></th>
+		</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td class='column'><%=user.first_name%></td>
+			<td class='column'><%=user.last_name%></td>
+			<td class='column'><%=user.email%></td>
+			<form action= method='post'>
+			<td>
+				<a href='/users/<%=user.id%>'>Show</a> |
+				<a href='/users/<%=user.id%>/edit'>Edit</a> |
+				<a href='/users/<%=user.id%>' data-method='delete'>Destroy</a>
+			</td>
+			</form>
+		</tr>
+	<% end %>
 	</table>
+</div>
+<p>
+<div id='nav'><a href='/users/new'>Add a New User</a></div>
+
 </body>
 </html>

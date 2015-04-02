@@ -46,3 +46,6 @@ end
 gem 'hirb'
 
 gem 'rails-footnotes'
+
+gem 'simple_form'
+gem 'bootstrap-sass'

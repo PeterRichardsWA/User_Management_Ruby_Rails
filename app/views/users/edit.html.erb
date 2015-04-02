@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Form for adding a New</title>
+</head>
+<body>
+<% if flash[:alert] then %>
+<div id='alert'>
+	<% flash[:alert].each {|key, value| %>
+	<div id='red'><%="#{key} #{value}"%></div>
+	<% } %>
+</div>
+<% end
+if @user then
+	first_name = @user[:first_name]
+	last_name = @user[:last_name]
+	email = @user[:email]
+	id = params[:id]
+else
+	first_name = ''
+	last_name = ''
+	email = ''
+end %>
+	<div>
+	<h2>Edit User</h2>
+	<form action='/users/<%=id%>/update' method='post'>
+	<input type='hidden' name='authenticity_token' value='<%form_authenticity_token%>'>
+	<label for='first_name'>First Name:</label><br>
+	<input type='text' name='first_name' value='<%=first_name%>' size='30'><br>
+	<label for='last_name'>Last Name:</label><br>
+	<input type='text' name='last_name' value='<%=last_name%>' size='30'><br>
+	<label for='email_name'>Email:</label><br>
+	<input type='text' name='email' value='<%=email%>' size='30'><br>
+	<label for='password_name'>Password:</label><br>
+	<input type='password' name='password' value='' size='30'>
+	<p>
+	<input type='submit' value='UPDATE'><br>
+	</form>
+	<a href='/'>Back</a>
+</div>
+
+</body>
+</html>

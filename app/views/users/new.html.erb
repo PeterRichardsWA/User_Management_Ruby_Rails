@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Form for adding a New</title>
+</head>
+<body>
+<% if flash[:alert] then %>
+<div id='alert'>
+	<% flash[:alert].each {|key, value| %>
+	<div id='red'><%="#{key} #{value}"%></div>
+	<% } %>
+</div>
+<% end %>
+
+	<div>
+	<h2>New User</h2>
+	<form action='/users/create' method='post'>
+	<input type='hidden' name='authenticity_token' value='<%form_authenticity_token%>'>
+	<label for='first_name'>First Name:</label><br>
+	<input type='text' name='first_name' value='' size='30'><br>
+	<label for='last_name'>Last Name:</label><br>
+	<input type='text' name='last_name' value='' size='30'><br>
+	<label for='email_name'>Email:</label><br>
+	<input type='text' name='email' value='' size='30'><br>
+	<label for='password_name'>Password:</label><br>
+	<input type='password' name='password' value='' size='30'>
+	<p>
+	<input type='submit' value='CREATE'><br>
+	</form>
+	<a href='/'>Back</a>
+</div>
+
+</body>
+</html>
